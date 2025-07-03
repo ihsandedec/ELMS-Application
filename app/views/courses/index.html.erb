@@ -1,0 +1,23 @@
+<h1 class="page-title">Tüm Kurslar</h1>
+<div class="card-list">
+  <% @courses.each do |course| %>
+    <div class="card">
+      <div>
+        <h2 class="card-title"><%= course.title %></h2>
+        <p class="card-desc"><%= course.description.truncate(80) %></p>
+        <span class="card-meta">Süre: <%= course.duration_minutes %> dk</span><br>
+        <span class="card-meta">Eğitmen: <%= course.instructor&.name %></span>
+      </div>
+      <div class="card-actions">
+        <%= link_to 'Detay', course_path(course), class: 'card-link' %>
+        <% if user_signed_in? && current_user.student? %>
+          <% unless current_user.enrollments.exists?(course_id: course.id) %>
+            <%= button_to 'Kayıt Ol', enrollments_path(course_id: course.id), method: :post, class: 'btn-primary' %>
+          <% else %>
+            <span style="color: #16a34a; font-weight: 600;">Kayıtlısınız</span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

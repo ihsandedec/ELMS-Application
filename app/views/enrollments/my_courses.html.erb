@@ -1,0 +1,23 @@
+<h1 class="page-title">Kayıtlı Olduğum Kurslar</h1>
+<div class="card-list">
+  <% @enrollments.each do |enrollment| %>
+    <div class="card">
+      <h2 class="card-title"><%= enrollment.course.title %></h2>
+      <p class="card-desc"><%= enrollment.course.description.truncate(80) %></p>
+      <% progress = enrollment.user.course_progresses.find_by(course_id: enrollment.course_id) %>
+      <% if progress %>
+        <div class="progress-box">
+          <span class="progress-label">İlerleme: <%= progress.completed ? 'Tamamlandı' : 'Devam Ediyor' %></span>
+          <div class="progress-bar-bg">
+            <div class="progress-bar" style="width: <%= (progress.time_spent_minutes.to_f / enrollment.course.duration_minutes * 100).round %>%"></div>
+          </div>
+          <span class="progress-time">Geçirilen süre: <%= progress.time_spent_minutes %> dk</span>
+        </div>
+      <% end %>
+      <div class="card-actions">
+        <%= link_to 'Kursu Gör', course_path(enrollment.course), class: 'card-link' %>
+        <%= button_to 'Kayıttan Çık', enrollment_path(enrollment), method: :delete, data: { confirm: 'Kayıttan çıkmak istediğinize emin misiniz?' }, class: 'btn-primary', style: 'background: #dc2626; margin-left: 10px;' %>
+      </div>
+    </div>
+  <% end %>
+</div>

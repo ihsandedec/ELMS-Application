@@ -1,0 +1,231 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+body {
+  background: #f7f7f7;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.navbar {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  margin-bottom: 24px;
+}
+.nav-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+.brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #2563eb;
+  text-decoration: none;
+}
+.nav-link {
+  color: #2563eb;
+  text-decoration: none;
+  margin-right: 18px;
+  font-size: 1rem;
+}
+.nav-link:last-child {
+  margin-right: 0;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+.nav-user {
+  margin-right: 18px;
+  color: #333;
+}
+.nav-logout {
+  color: #dc2626;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+}
+.alert {
+  padding: 12px 18px;
+  border-radius: 4px;
+  margin-bottom: 18px;
+  background: #e0f7e9;
+  color: #166534;
+  border: 1px solid #a7f3d0;
+}
+.alert-error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+.notice {
+  background: #e0f7e9;
+  color: #166534;
+  border: 1px solid #a7f3d0;
+}
+
+/* Dashboard ve kartlar */
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 20px;
+  flex: 1 1 320px;
+  min-width: 280px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.card-desc {
+  color: #555;
+  margin-bottom: 10px;
+}
+.card-meta {
+  font-size: 0.95rem;
+  color: #888;
+}
+.card-actions {
+  margin-top: 12px;
+}
+.card-link {
+  color: #2563eb;
+  text-decoration: none;
+  margin-right: 16px;
+  font-size: 1rem;
+}
+.card-link:hover {
+  text-decoration: underline;
+}
+.btn-primary {
+  background: #2563eb;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.btn-primary:hover {
+  background: #1746a2;
+}
+/* Progress bar */
+.progress-box {
+  margin-bottom: 10px;
+}
+.progress-label {
+  font-size: 0.95rem;
+  color: #333;
+}
+.progress-bar-bg {
+  width: 100%;
+  background: #e5e7eb;
+  border-radius: 8px;
+  height: 10px;
+  margin: 6px 0;
+}
+.progress-bar {
+  background: #2563eb;
+  height: 10px;
+  border-radius: 8px;
+}
+.progress-time {
+  font-size: 0.85rem;
+  color: #888;
+}
+/* Admin paneli */
+.admin-stats {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+.stat-box {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 24px 18px;
+  flex: 1 1 180px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+.stat-label {
+  color: #555;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+/* Formlar */
+.form-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  max-width: 420px;
+  margin: 32px auto;
+  padding: 28px 24px;
+}
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 22px;
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 18px;
+}
+.form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.form-input {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  background: #f9fafb;
+  margin-bottom: 2px;
+  box-sizing: border-box;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: #fff;
+}

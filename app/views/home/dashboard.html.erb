@@ -1,0 +1,56 @@
+<% if current_user.student? %>
+  <h1 class="page-title">Kayıtlı Kurslarım</h1>
+  <div class="card-list">
+    <% @enrollments.each do |enrollment| %>
+      <div class="card">
+        <h2 class="card-title"><%= enrollment.course.title %></h2>
+        <p class="card-desc"><%= enrollment.course.description.truncate(80) %></p>
+        <% progress = @progresses.find { |p| p.course_id == enrollment.course_id } %>
+        <% if progress %>
+          <div class="progress-box">
+            <span class="progress-label">İlerleme: <%= progress.completed ? 'Tamamlandı' : 'Devam Ediyor' %></span>
+            <div class="progress-bar-bg">
+              <div class="progress-bar" style="width: <%= (progress.time_spent_minutes.to_f / enrollment.course.duration_minutes * 100).round %>%"></div>
+            </div>
+            <span class="progress-time">Geçirilen süre: <%= progress.time_spent_minutes %> dk</span>
+          </div>
+        <% end %>
+        <%= link_to 'Kursu Gör', course_path(enrollment.course), class: 'card-link' %>
+      </div>
+    <% end %>
+  </div>
+<% elsif current_user.instructor? %>
+  <h1 class="page-title">Oluşturduğum Kurslar</h1>
+  <div class="card-list">
+    <% @courses.each do |course| %>
+      <div class="card">
+        <h2 class="card-title"><%= course.title %></h2>
+        <p class="card-desc"><%= course.description.truncate(80) %></p>
+        <span class="card-meta">Kayıtlı öğrenci: <%= course.enrollments.count %></span>
+        <div class="card-actions">
+          <%= link_to 'Düzenle', edit_course_path(course), class: 'card-link' %>
+          <%= link_to 'Detay', course_path(course), class: 'card-link' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div style="margin-top: 32px;">
+    <%= link_to 'Yeni Kurs Oluştur', new_course_path, class: 'btn-primary' %>
+  </div>
+<% elsif current_user.admin? %>
+  <h1 class="page-title">Yönetici Paneli</h1>
+  <div class="admin-stats">
+    <div class="stat-box">
+      <div class="stat-value"><%= @users_count %></div>
+      <div class="stat-label">Kullanıcı</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value"><%= @courses_count %></div>
+      <div class="stat-label">Kurs</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-value"><%= @enrollments_count %></div>
+      <div class="stat-label">Kayıt</div>
+    </div>
+  </div>
+<% end %>

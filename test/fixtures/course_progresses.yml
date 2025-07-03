@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  course_id: 1
+  time_spent_minutes: 1
+  current_position: MyString
+  completed: false
+
+two:
+  user_id: 1
+  course_id: 1
+  time_spent_minutes: 1
+  current_position: MyString
+  completed: false
