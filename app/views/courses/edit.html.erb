@@ -17,8 +17,13 @@
       <%= form.label :active, 'Aktif mi?', class: 'form-label' %>
       <%= form.check_box :active %>
     </div>
-    <div>
+    <div class="btn-group">
       <%= form.submit 'Güncelle', class: 'btn-primary' %>
     </div>
+    <% if user_signed_in? && (current_user.admin? || @course.instructor == current_user) %>
+      <div style="text-align: left; margin-top: 12px;">
+        <%= link_to 'Kursu Sil', course_path(@course), method: :delete, data: { confirm: 'Kursu silmek istediğinize emin misiniz?' }, class: 'card-link', style: 'color: #dc2626;' %>
+      </div>
+    <% end %>
   <% end %>
 </div>

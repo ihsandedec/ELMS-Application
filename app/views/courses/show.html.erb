@@ -4,6 +4,7 @@
   <div class="card-meta">Eğitmen: <%= @course.instructor&.name %></div>
   <div class="card-meta">Süre: <%= @course.duration_minutes %> dk</div>
   <div class="card-meta">Durum: <%= @course.active ? 'Aktif' : 'Pasif' %></div>
+  
   <% if user_signed_in? && current_user.student? %>
     <% unless current_user.enrollments.exists?(course_id: @course.id) %>
       <%= button_to 'Kursa Kayıt Ol', enrollments_path(course_id: @course.id), method: :post, class: 'btn-primary', style: 'margin-top: 18px;' %>
@@ -11,9 +12,11 @@
       <span style="color: #16a34a; font-weight: 600; margin-top: 18px; display: inline-block;">Bu kursa kayıtlısınız.</span>
     <% end %>
   <% end %>
+  
   <% if user_signed_in? && (current_user.admin? || @course.instructor == current_user) %>
-    <div class="card-actions" style="margin-top: 18px;">
+    <div class="card-actions">
       <%= link_to 'Düzenle', edit_course_path(@course), class: 'card-link' %>
+      <%= link_to 'Kursu Sil', course_path(@course), method: :delete, data: { confirm: 'Kursu silmek istediğinize emin misiniz?' }, class: 'card-link', style: 'color: #dc2626;' %>
     </div>
   <% end %>
 </div>

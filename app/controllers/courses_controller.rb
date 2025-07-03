@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_course, only: [:show, :edit, :update]
-  before_action :authorize_instructor!, only: [:new, :create, :edit, :update]
-  before_action :authorize_owner!, only: [:edit, :update]
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_instructor!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
   def index
     @courses = Course.all
@@ -33,6 +33,11 @@ class CoursesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @course.destroy
+    redirect_to courses_path, notice: 'Kurs silindi.'
   end
 
   private
